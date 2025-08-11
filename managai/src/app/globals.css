@@ -24,3 +24,38 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* ==== Signup form (ManagAI) ==== */
+.signup form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  width: 100%;
+}
+.signup input {
+  padding: 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #0f1115;       /* sötét háttér */
+  color: #fff;
+}
+.signup button {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #E60023;       /* MAI piros */
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.signup .hp { display: none; } /* honeypot */
+.signup .success {
+  padding: 12px;
+  border-radius: 8px;
+  background: #0c3b2e;
+  color: #c9ffe1;
+}
+.signup .error {
+  margin-top: 6px;
+  color: #ffb3b3;
+}

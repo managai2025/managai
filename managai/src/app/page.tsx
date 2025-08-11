@@ -27,11 +27,11 @@ export default function Home() {
               <a
                 href="mailto:gricsi12@icloud.com?subject=ManagAI%20-%20Előregisztráció"
                 className="rounded-md bg-emerald-500 px-5 py-3 font-medium text-black hover:bg-emerald-400"
-              >
+              >import SignupForm from '../components/SignupForm';
                 Előregisztráció
               </a>
               <a
-                href="https://managai.framer.website"
+                href="https://managai-iota.vercel.app"
                 target="_blank"
                 className="rounded-md border border-neutral-700 px-5 py-3 font-medium hover:border-neutral-500"
               >
