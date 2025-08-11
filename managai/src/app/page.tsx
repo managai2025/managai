@@ -1,3 +1,8 @@
+import SignupForm from "@/src/components/src/components/SignupForm";
+'use client';
+import { useState } from 'react';
+import './globals.css';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
@@ -17,30 +22,31 @@ export default function Home() {
 
         <section className="mt-20 grid gap-6 md:grid-cols-2 md:items-center">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-              AI, ami elvégzi a webshopod <span className="text-emerald-400">manuális</span> munkáit.
-            </h1>
-            <p className="mt-4 text-neutral-300">
-              Akciók időzítése, SEO, Analytics, chatbot és vásárlói ajánlások – egy platformon.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="mailto:gricsi12@icloud.com?subject=ManagAI%20-%20Előregisztráció"
-                className="rounded-md bg-emerald-500 px-5 py-3 font-medium text-black hover:bg-emerald-400"
-              >import SignupForm from '../components/SignupForm';
-                Előregisztráció
-              </a>
-              <a
-                href="https://managai-iota.vercel.app"
-                target="_blank"
-                className="rounded-md border border-neutral-700 px-5 py-3 font-medium hover:border-neutral-500"
-              >
-                Demo / Pitch
-              </a>
-            </div>
-            <p className="mt-3 text-sm text-neutral-400">
-              Első 100 ügyfél: bevezető ár az első évben.
-            </p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+  AI, ami elvégzi a webshopod <span className="text-emerald-400">manuális</span> munkáit.
+</h1>
+
+<p className="mt-4 text-neutral-300">
+  {"Akciók időzítése, SEO, Analytics, chatbot és vásárlói ajánlások — egy platformon."}
+</p>
+
+<div className="mt-6 space-y-4">
+  <SignupForm />
+  <div>
+    <a
+      href="https://managai-iota.vercel.app"
+      target="_blank"
+      className="inline-block rounded-md border border-neutral-700 px-5 py-3 hover:bg-neutral-800"
+    >
+      Demo / Pitch
+    </a>
+  </div>
+</div>
+
+<p className="mt-3 text-sm text-neutral-400">
+  {"Első 100 ügyfél: bevezető ár az első évben."}
+</p>
+
           </div>
 
           <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-5">
