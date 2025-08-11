@@ -1,6 +1,4 @@
-import SignupForm from "@/src/components/src/components/SignupForm";
-'use client';
-import { useState } from 'react';
+import SignupForm from '@/components/SignupForm';  
 import './globals.css';
 
 export default function Home() {
@@ -20,45 +18,42 @@ export default function Home() {
           </a>
         </header>
 
-        <section className="mt-20 grid gap-6 md:grid-cols-2 md:items-center">
-          <div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-  AI, ami elvégzi a webshopod <span className="text-emerald-400">manuális</span> munkáit.
-</h1>
-
-<p className="mt-4 text-neutral-300">
-  {"Akciók időzítése, SEO, Analytics, chatbot és vásárlói ajánlások — egy platformon."}
-</p>
-
-<div className="mt-6 space-y-4">
-  <SignupForm />
+        <section className="mt-20 grid gap-8 md:grid-cols-2 md:items-center">
   <div>
-    <a
-      href="https://managai-iota.vercel.app"
-      target="_blank"
-      className="inline-block rounded-md border border-neutral-700 px-5 py-3 hover:bg-neutral-800"
-    >
-      Demo / Pitch
-    </a>
+    <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+      AI, ami elvégzi a webshopod <span className="text-emerald-400">manuális</span> munkáit.
+    </h1>
+
+    <p className="mt-3 text-sm text-neutral-400">
+    {"Első 100 ügyfél: bevezető ár az első évben."}
+      {"Akciók időzítése, SEO, Analytics, chatbot és vásárlói ajánlások — egy platformon."}
+    </p>
+
+    <div className="mt-6 space-y-4">
+      <SignupForm />
+
+      {/* Meghagyjuk a Demo/Pitch linket külön */}
+      <div>
+        <a
+          href="https://managai-iota.vercel.app"
+          target="_blank"
+          className="inline-block rounded-md border border-neutral-700 px-5 py-3 hover:bg-neutral-800"
+        >
+          Demo / Pitch
+        </a>
+      </div>
+    </div>
+
+    <p className="mt-3 text-sm text-neutral-400">
+      {"Első 100 ügyfél: bevezető ár az első évben."}
+    </p>
   </div>
-</div>
 
-<p className="mt-3 text-sm text-neutral-400">
-  {"Első 100 ügyfél: bevezető ár az első évben."}
-</p>
-
-          </div>
-
-          <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-5">
-            <div className="aspect-video w-full rounded-lg border border-neutral-800 bg-neutral-950" />
-            <ul className="mt-5 grid grid-cols-2 gap-3 text-sm text-neutral-300">
-              <li className="rounded-md bg-neutral-900/60 p-3">✅ Akciók időzítése</li>
-              <li className="rounded-md bg-neutral-900/60 p-3">✅ SEO automatizálás</li>
-              <li className="rounded-md bg-neutral-900/60 p-3">✅ GA integráció</li>
-              <li className="rounded-md bg-neutral-900/60 p-3">✅ AI Chatbot</li>
-            </ul>
-          </div>
-        </section>
+  {/* jobb oldali doboz / videó / bármi */}
+  <div className="rounded-xl border border-neutral-800 p-6">
+    {/* ide mehet később kép vagy videó */}
+  </div>
+</section>
 
         <footer className="mt-16 border-t border-neutral-900 pt-6 text-sm text-neutral-500">
           © {new Date().getFullYear()} ManagAI — Tulajdonos & Alapító: Gricsi
