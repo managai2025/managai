@@ -1,4 +1,4 @@
-import SignupForm from '@/components/SignupForm';  
+import SignupForm from '../src/components/src/components/SignupForm';  
 import './globals.css';
 
 export default function Home() {
@@ -24,9 +24,8 @@ export default function Home() {
       AI, ami elvégzi a webshopod <span className="text-emerald-400">manuális</span> munkáit.
     </h1>
 
-    <p className="mt-3 text-sm text-neutral-400">
-    {"Első 100 ügyfél: bevezető ár az első évben."}
-      {"Akciók időzítése, SEO, Analytics, chatbot és vásárlói ajánlások — egy platformon."}
+    <p className="mt-4 text-neutral-300">
+    {"Akciók időzítése, SEO, Analytics, chatbot és vásárlói ajánlások — egy platformon."}
     </p>
 
     <div className="mt-6 space-y-4">
@@ -56,7 +55,7 @@ export default function Home() {
 </section>
 
         <footer className="mt-16 border-t border-neutral-900 pt-6 text-sm text-neutral-500">
-          © {new Date().getFullYear()} ManagAI — Tulajdonos & Alapító: Gricsi
+          © {new Date().getFullYear()} ManagAI — Tulajdonos & Alapító: Gafouroglou Richard
         </footer>
       </div>
     </main>
