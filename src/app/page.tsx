@@ -62,13 +62,13 @@ export default function Home() {
           <div>
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
               <span className="bg-gradient-to-tr from-emerald-300 to-lime-200 bg-clip-text text-transparent">
-                Intelligens webshop automatizáció
+                Az intelligens webshop automatizáció új generációja
               </span>
-              <span className="block mt-3">egy platformon, egy aggyal.</span>
+              <span className="block mt-3">ami elvégzi a webshopod manuális munkáit.</span>
             </h1>
             <p className="mt-6 text-lg text-zinc-300">
-              Events → Rules → Messages. Elhagyott kosár, price-drop, back-in-stock,
-              KPI csempék és ütemezett kiküldés – mindez no-code szabályokkal.
+              Az első 100 ügyfél 6 hónapig a bevezető áron tudja kipróbálni, próbaidő után.
+              ManagAI segítünk, hogy elérd a céljaid időben, kiadás lecsökkentésében, energia felhasználásban.
             </p>
 
             {/* E-mail feliratkozás / köszönjük állapot */}
@@ -87,7 +87,7 @@ export default function Home() {
                     disabled={loading}
                     className="whitespace-nowrap rounded-xl bg-emerald-400 px-5 py-3 font-semibold text-black hover:opacity-90 disabled:opacity-60"
                   >
-                    {loading ? 'Küldés…' : 'Érdekel a demo'}
+                    {loading ? 'Küldés…' : 'Előregisztrálok'}
                   </button>
                 </form>
               ) : (
@@ -98,7 +98,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <p className="text-emerald-300">
-                    Köszönjük! Hamarosan jelentkezünk a demóval. 🎉
+                    Köszönjük, hamarosan értesítünk! 🎉
                   </p>
                 </div>
               )}
@@ -141,9 +141,32 @@ export default function Home() {
               {/* Árazási csomagok */}
               <div className="space-y-4">
                 {[
-                  { name: 'Alap csomag', price: '19.990', features: ['Esemény követés', '5 szabály', 'E-mail küldés'] },
-                  { name: 'Növekedő csomag', price: '29.990', features: ['Minden az Alapból', '25 szabály', 'A/B tesztelés'] },
-                  { name: 'Prémium csomag', price: '49.990', features: ['Minden a Növekedőből', 'Korlátlan szabály', 'API hozzáférés'] },
+                  { 
+                    name: 'Alap csomag', 
+                    price: '19.990', 
+                    features: [
+                      'SEO Copilot: Technikai checklist + auto-fix javaslatok',
+                      'AI Support: Válasz-sablonok, ChatBot',
+                      'Promo AI: időzített promók, A/B taktika, free-shipping nudger'
+                    ] 
+                  },
+                  { 
+                    name: 'Növekedő csomag', 
+                    price: '29.990', 
+                    features: [
+                      'Ops Automations: rendelés/készlet workflow, késés-riasztó, RMA asszisztens',
+                      'Cart Recovery 2.0: elhagyott kosár + price-drop + back-in-stock egy motorból'
+                    ] 
+                  },
+                  { 
+                    name: 'Prémium csomag', 
+                    price: '49.990', 
+                    features: [
+                      'Feed Health Monitor: Merchant Center hibák + javítási lépések',
+                      'Smart Recs: viselkedés-ajánlók, bundle AI, price-drop/back-in-stock',
+                      'KPI Dashboard + napi digest: bevétel, AOV, CR, refund, RFM'
+                    ] 
+                  },
                 ].map((pkg, idx) => (
                   <div key={pkg.name} className={`rounded-xl border p-4 ${
                     idx === 1 
