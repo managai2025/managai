@@ -1,0 +1,28 @@
+{
+  "id": "bf_promo_v1",
+  "name": "Black Friday Promo",
+  "when": {
+    "event": "custom",
+    "within_minutes": 10080
+  },
+  "if": [
+    {
+      "field": "customer.email",
+      "op": "exists"
+    }
+  ],
+  "then": [
+    {
+      "type": "shopify.discount.publish",
+      "params": {
+        "code": "BF2025",
+        "percent": 15
+      }
+    },
+    {
+      "type": "email.send",
+      "template": "bf_launch"
+    }
+  ],
+  "enabled": true
+}

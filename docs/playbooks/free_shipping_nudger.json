@@ -1,0 +1,17 @@
+{
+  "id": "free_shipping_nudger_v1",
+  "name": "Free Shipping Nudger",
+  "when": {
+    "event": "site_view"
+  },
+  "then": [
+    {
+      "type": "widget.show",
+      "params": {
+        "kind": "nudger",
+        "threshold": 15000
+      }
+    }
+  ],
+  "enabled": true
+}
