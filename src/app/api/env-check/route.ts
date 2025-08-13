@@ -1,16 +1,25 @@
 import { NextResponse } from 'next/server';
+import { headers } from 'next/headers';
 
 export async function GET() {
-  const url = process.env.SUPABASE_URL || '';
-  const role = !!process.env.SUPABASE_SERVICE_ROLE || !!process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const ref = url?.replace('https://','').split('.')[0];
-  const base = process.env.NEXT_PUBLIC_BASE_URL ||
-               (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://127.0.0.1:3000');
+  const h = headers();
+  const host = h.get('x-forwarded-host') || h.get('host') || 'localhost:3000';
+  const proto = h.get('x-forwarded-proto') || 'https';
+
+  const base =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    `${proto}://${host}`;
+
+  const supabaseUrl = process.env.SUPABASE_URL || '';
+  const supabaseRef = supabaseUrl.split('//')[1]?.split('.')[0] || null;
+
   return NextResponse.json({
-    ok: !!url && role,
-    hasUrl: !!url,
-    hasRole: role,
-    supabaseRef: ref,
-    base
+    ok: true,
+    env: process.env.NODE_ENV,
+    base,
+    hasUrl: Boolean(process.env.SUPABASE_URL),
+    hasRole: Boolean(process.env.SUPABASE_SERVICE_ROLE),
+    hasOrg: Boolean(process.env.MANAGAI_ORG_ID),
+    supabaseRef,
   });
 }
