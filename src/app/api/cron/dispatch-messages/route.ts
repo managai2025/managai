@@ -2,28 +2,28 @@ export const runtime = 'nodejs';
 export const preferredRegion = 'fra1';
 
 import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
 import { supabaseAdmin } from '@/lib/db/supabase';
 import { sendEmail } from '@/lib/rules/actions/email';
 
-function ensureCronAuthorized() {
-  const auth = headers().get('authorization') || '';
-  const secret = process.env.CRON_SECRET;
-  if (secret && auth !== `Bearer ${secret}`) {
-    return new Response('Unauthorized', { status: 401 });
-  }
-  return null;
+// ⛔️ Ezt töröld, ha bent van:
+// import { headers } from 'next/headers';
+
+// (opcionális, ha kell a dynamic route viselkedés)
+// export const dynamic = 'force-dynamic';
+
+function unauthorized() {
+  return new Response('Unauthorized', { status: 401 });
 }
 
-export async function POST() {
-  const unauthorized = ensureCronAuthorized();
-  if (unauthorized) return unauthorized;
-
+async function dispatch() {
+  // IDE jön a meglévő kiküldési logikád
+  // pl.: const sent = await dispatchQueuedMessages();
   const { data: rows, error } = await supabaseAdmin
     .from('messages').select('id, org_id, status, meta').eq('status', 'queued').limit(25);
 
-  if (error) return NextResponse.json({ ok:false, error: error.message }, { status: 500 });
-  if (!rows?.length) return NextResponse.json({ ok:true, sent: 0 });
+  if (error) return Response.json({ ok:false, error: error.message }, { status: 500 });
+  if (!rows?.length) return Response.json({ ok:true, sent: 0 });
 
   let sent = 0, failed = 0;
 
@@ -50,10 +50,19 @@ export async function POST() {
     }
   }
 
-  return NextResponse.json({ ok:true, sent, failed });
+  return Response.json({ ok:true, sent, failed });
 }
 
-// opcionális: a vercel cron GET-tel is hívhatja -> irányítsuk a POST-ra
-export async function GET() {
-  return POST();
+export async function POST(req: Request) {
+  const secret = process.env.CRON_SECRET;
+  if (secret) {
+    const auth = req.headers.get('authorization') ?? '';
+    if (auth !== `Bearer ${secret}`) return unauthorized();
+  }
+  return dispatch();
+}
+
+// GET is hívhassa ugyanazt (ha a Vercel véletlen GET-tel pingelné)
+export async function GET(req: Request) {
+  return POST(req);
 }
