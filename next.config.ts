@@ -1,14 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  experimental: { serverActions: { bodySizeLimit: '2mb' } },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
-    // Ne álljon meg a build lint hibák miatt (csak demo/gyors haladás)
+    // Ne álljon meg a build ESLint hibáknál (demo / gyors haladás)
     ignoreDuringBuilds: true,
   },
-  // ha szeretnéd, ideiglenesen a TS hibákat is átengedheted:
+  // Ha nagyon kell "nukleáris" opció demóra, ezt is bekapcsolhatod ideiglenesen:
   // typescript: { ignoreBuildErrors: true },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
