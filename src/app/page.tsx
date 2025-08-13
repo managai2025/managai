@@ -123,29 +123,65 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Vizuál / mock KPI kártya */}
+          {/* Vizuál / árazási csomagok */}
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-emerald-500/20 to-lime-400/10 blur-2xl" />
             <div className="relative rounded-[2rem] border border-zinc-800 bg-zinc-950/60 p-6 backdrop-blur">
-              <div className="text-sm text-zinc-400">KPI összefoglaló (demo)</div>
-              <div className="mt-3 grid grid-cols-2 gap-4">
+              {/* Promó banner */}
+              <div className="mb-6 rounded-xl bg-gradient-to-r from-emerald-500/20 to-lime-400/20 border border-emerald-400/30 p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                  <span className="text-sm font-medium text-emerald-300">Korai hozzáférés</span>
+                </div>
+                <p className="text-xs text-emerald-200">
+                  Első 100 résztvevő <span className="font-semibold">6 hónapig akciós áron</span>
+                </p>
+              </div>
+
+              {/* Árazási csomagok */}
+              <div className="space-y-4">
                 {[
-                  { k: 'Bevétel', v: '12.4M Ft' },
-                  { k: 'CR', v: '3.2%' },
-                  { k: 'AOV', v: '17 990 Ft' },
-                  { k: 'Cart recovery', v: '+8.1%' },
-                ].map((x) => (
-                  <div key={x.k} className="rounded-xl border border-zinc-800 bg-black/40 p-4">
-                    <div className="text-xs text-zinc-400">{x.k}</div>
-                    <div className="mt-1 text-xl font-semibold">{x.v}</div>
+                  { name: 'Alap csomag', price: '19.990', features: ['Esemény követés', '5 szabály', 'E-mail küldés'] },
+                  { name: 'Növekedő csomag', price: '29.990', features: ['Minden az Alapból', '25 szabály', 'A/B tesztelés'] },
+                  { name: 'Prémium csomag', price: '49.990', features: ['Minden a Növekedőből', 'Korlátlan szabály', 'API hozzáférés'] },
+                ].map((pkg, idx) => (
+                  <div key={pkg.name} className={`rounded-xl border p-4 ${
+                    idx === 1 
+                      ? 'border-emerald-400/50 bg-emerald-400/10' 
+                      : 'border-zinc-700 bg-black/40'
+                  }`}>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className={`font-semibold text-sm ${
+                        idx === 1 ? 'text-emerald-300' : 'text-white'
+                      }`}>
+                        {pkg.name}
+                      </h3>
+                      <span className={`text-lg font-bold ${
+                        idx === 1 ? 'text-emerald-300' : 'text-zinc-300'
+                      }`}>
+                        {pkg.price} Ft
+                      </span>
+                    </div>
+                    <ul className="text-xs text-zinc-400 space-y-1">
+                      {pkg.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-center gap-2">
+                          <div className={`h-1 w-1 rounded-full ${
+                            idx === 1 ? 'bg-emerald-300' : 'bg-zinc-500'
+                          }`}></div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
-              <div className="mt-6 rounded-xl border border-zinc-800 bg-black/40 p-4">
-                <div className="text-xs text-zinc-400">Utolsó automatizáció</div>
-                <div className="mt-1 text-sm">
-                  <span className="text-emerald-300 font-medium">Cart Recovery 2.0</span> → 23 e-mail elküldve
-                </div>
+
+              {/* CTA */}
+              <div className="mt-6 text-center">
+                <button className="w-full rounded-xl bg-emerald-400 px-4 py-2 py-3 font-semibold text-black hover:opacity-90 transition-opacity">
+                  Indítsd el ingyenesen
+                </button>
+                <p className="mt-2 text-xs text-zinc-500">14 nap próba, nincs kötelezettség</p>
               </div>
             </div>
           </div>
