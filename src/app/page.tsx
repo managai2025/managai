@@ -44,7 +44,7 @@ export default function Home() {
         <header className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* /public/logo.svg esetén ez jelenik meg */}
-            <Image src="/logo.svg" alt="ManagAI" width={36} height={36} className="rounded-lg" />
+            <Image src="/logo.svg" alt="ManagAI" width={48} height={48} className="rounded-lg" />
             <span className="text-xl font-semibold tracking-tight text-emerald-300">ManagAI</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-300">
