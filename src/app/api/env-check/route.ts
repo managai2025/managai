@@ -1,14 +1,9 @@
 import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
 
-export async function GET() {
-  const h = headers();
-  const host = h.get('x-forwarded-host') || h.get('host') || 'localhost:3000';
-  const proto = h.get('x-forwarded-proto') || 'https';
-
+export async function GET(req: Request) {
+  const url = new URL(req.url);
   const base =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    `${proto}://${host}`;
+    process.env.NEXT_PUBLIC_BASE_URL || `${url.protocol}//${url.host}`;
 
   const supabaseUrl = process.env.SUPABASE_URL || '';
   const supabaseRef = supabaseUrl.split('//')[1]?.split('.')[0] || null;
@@ -17,9 +12,9 @@ export async function GET() {
     ok: true,
     env: process.env.NODE_ENV,
     base,
-    hasUrl: Boolean(process.env.SUPABASE_URL),
-    hasRole: Boolean(process.env.SUPABASE_SERVICE_ROLE),
-    hasOrg: Boolean(process.env.MANAGAI_ORG_ID),
+    hasUrl: !!process.env.SUPABASE_URL,
+    hasRole: !!process.env.SUPABASE_SERVICE_ROLE,
+    hasOrg: !!process.env.MANAGAI_ORG_ID,
     supabaseRef,
   });
 }
