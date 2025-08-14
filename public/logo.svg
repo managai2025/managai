@@ -1,5 +1,10 @@
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="36" height="36" rx="8" fill="#10B981"/>
-  <path d="M8 12L18 22L28 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="18" cy="18" r="16" stroke="white" stroke-width="2" stroke-opacity="0.3"/>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="24" fill="white"/>
+  
+  <!-- Red "M" letter -->
+  <path d="M12 36V12L18 24L24 12L30 24L36 12V36" stroke="#DC2626" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Small horizontal line/dash -->
+  <line x1="32" y1="16" x2="36" y2="16" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/>
 </svg>
