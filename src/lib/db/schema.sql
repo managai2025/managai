@@ -95,9 +95,13 @@ create table if not exists messages (
 create table if not exists subscriptions (
   id uuid primary key default gen_random_uuid(),
   org_id uuid references organizations(id) on delete cascade,
-  plan text not null,
+  email text not null,
+  source text not null default 'landing',
+  status text not null default 'subscribed',
+  plan text,
   meter jsonb not null default '{}'::jsonb,
-  created_at timestamptz default now()
+  created_at timestamptz default now(),
+  unique(email)
 );
 
 create table if not exists experiments (
