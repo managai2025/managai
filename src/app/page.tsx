@@ -44,14 +44,14 @@ export default function Home() {
         <header className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* /public/logo.png esetén ez jelenik meg */}
-            <Image
-              src="/logo.png"
-              alt="ManagAI"
-              width={48}
-              height={48}
-              priority
-              className="h-12 w-12 rounded-lg"
-            />
+                         <Image
+               src="/logo.png?v=2"
+               alt="ManagAI"
+               width={48}
+               height={48}
+               priority
+               className="h-12 w-12 rounded-lg"
+             />
             <span className="text-2xl font-bold tracking-wide text-emerald-300">ManagAI</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-300">
