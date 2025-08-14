@@ -60,15 +60,15 @@ export default function Home() {
         {/* Hero blokk */}
         <section className="mt-16 grid items-center gap-10 md:grid-cols-2">
           <div>
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
               <span className="bg-gradient-to-tr from-emerald-300 to-lime-200 bg-clip-text text-transparent">
                 Az intelligens webshop automatizáció új generációja
               </span>
-              <span className="block mt-3">ami elvégzi a webshopod manuális munkáit.</span>
+              <span className="block mt-2 text-2xl md:text-3xl text-white/90">ami elvégzi a webshopod manuális munkáit.</span>
             </h1>
-            <p className="mt-6 text-lg text-zinc-300">
-              Az első 100 ügyfél 6 hónapig a bevezető áron tudja kipróbálni, próbaidő után.
-              ManagAI segítünk, hogy elérd a céljaid időben, kiadás lecsökkentésében, energia felhasználásban.
+            <p className="mt-4 text-base text-zinc-300 leading-relaxed">
+              Az első 100 ügyfél 6 hónapig a bevezető áron tudja kipróbálni, próbaidő után.<br/>
+              <span className="text-emerald-300 font-medium">ManagAI segítünk, hogy elérd a céljaid időben, kiadás lecsökkentésében, energia felhasználásban.</span>
             </p>
 
             {/* E-mail feliratkozás / köszönjük állapot */}
@@ -109,37 +109,26 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Gyors linkek */}
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/events" className="rounded-xl px-4 py-2 border border-zinc-800 hover:border-zinc-600">
-                Élő események
-              </Link>
-              <Link href="/messages" className="rounded-xl px-4 py-2 border border-zinc-800 hover:border-zinc-600">
-                Üzenetsor
-              </Link>
-              <Link href="/connectors" className="rounded-xl px-4 py-2 border border-zinc-800 hover:border-zinc-600">
-                Integrációk
-              </Link>
-            </div>
+
           </div>
 
           {/* Vizuál / árazási csomagok */}
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-emerald-500/20 to-lime-400/10 blur-2xl" />
-            <div className="relative rounded-[2rem] border border-zinc-800 bg-zinc-950/60 p-6 backdrop-blur">
+          <div className="relative -mx-8">
+            <div className="absolute -inset-8 rounded-[2rem] bg-gradient-to-tr from-emerald-500/20 to-lime-400/10 blur-2xl" />
+            <div className="relative rounded-[2rem] border border-zinc-800 bg-zinc-950/60 p-8 backdrop-blur">
               {/* Promó banner */}
-              <div className="mb-6 rounded-xl bg-gradient-to-r from-emerald-500/20 to-lime-400/20 border border-emerald-400/30 p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                  <span className="text-sm font-medium text-emerald-300">Korai hozzáférés</span>
+              <div className="mb-8 rounded-2xl bg-gradient-to-r from-emerald-500/20 to-lime-400/20 border border-emerald-400/30 p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></div>
+                  <span className="text-base font-semibold text-emerald-300">🚀 Korai hozzáférés</span>
                 </div>
-                <p className="text-xs text-emerald-200">
-                  Első 100 résztvevő <span className="font-semibold">6 hónapig akciós áron</span>
+                <p className="text-sm text-emerald-200 leading-relaxed">
+                  Első 100 résztvevő <span className="font-bold text-white">6 hónapig akciós áron</span>
                 </p>
               </div>
 
               {/* Árazási csomagok */}
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {[
                   { 
                     name: 'Alap csomag', 
@@ -168,61 +157,49 @@ export default function Home() {
                     ] 
                   },
                 ].map((pkg, idx) => (
-                  <div key={pkg.name} className={`rounded-xl border p-4 ${
-                    idx === 1 
-                      ? 'border-emerald-400/50 bg-emerald-400/10' 
-                      : 'border-zinc-700 bg-black/40'
-                  }`}>
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className={`font-semibold text-sm ${
-                        idx === 1 ? 'text-emerald-300' : 'text-white'
-                      }`}>
-                        {pkg.name}
-                      </h3>
-                      <span className={`text-lg font-bold ${
-                        idx === 1 ? 'text-emerald-300' : 'text-zinc-300'
-                      }`}>
-                        {pkg.price} Ft
-                      </span>
-                    </div>
-                    <ul className="text-xs text-zinc-400 space-y-1">
-                      {pkg.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-center gap-2">
-                          <div className={`h-1 w-1 rounded-full ${
-                            idx === 1 ? 'bg-emerald-300' : 'bg-zinc-500'
-                          }`}></div>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                                     <div key={pkg.name} className={`rounded-2xl border p-6 transition-all hover:scale-105 ${
+                     idx === 1 
+                       ? 'border-emerald-400/50 bg-emerald-400/10 shadow-lg shadow-emerald-500/20' 
+                       : 'border-zinc-700 bg-black/40 hover:border-zinc-600'
+                   }`}>
+                                         <div className="flex items-center justify-between mb-4">
+                       <h3 className={`text-lg font-bold ${
+                         idx === 1 ? 'text-emerald-300' : 'text-white'
+                       }`}>
+                         {pkg.name}
+                       </h3>
+                       <span className={`text-2xl font-bold ${
+                         idx === 1 ? 'text-emerald-300' : 'text-zinc-300'
+                       }`}>
+                         {pkg.price} Ft
+                       </span>
+                     </div>
+                                         <ul className="text-sm text-zinc-300 space-y-3 leading-relaxed">
+                       {pkg.features.map((feature, fIdx) => (
+                         <li key={fIdx} className="flex items-start gap-3">
+                           <div className={`h-2 w-2 rounded-full mt-2 flex-shrink-0 ${
+                             idx === 1 ? 'bg-emerald-300' : 'bg-zinc-400'
+                           }`}></div>
+                           <span className="text-zinc-200">{feature}</span>
+                         </li>
+                       ))}
+                     </ul>
                   </div>
                 ))}
               </div>
 
               {/* CTA */}
-              <div className="mt-6 text-center">
-                <button className="w-full rounded-xl bg-emerald-400 px-4 py-2 py-3 font-semibold text-black hover:opacity-90 transition-opacity">
-                  Indítsd el ingyenesen
+              <div className="mt-8 text-center">
+                <button className="w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-lime-400 px-6 py-4 text-lg font-bold text-black hover:from-emerald-300 hover:to-lime-300 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-emerald-500/25">
+                  🚀 Indítsd el ingyenesen
                 </button>
-                <p className="mt-2 text-xs text-zinc-500">14 nap próba, nincs kötelezettség</p>
+                <p className="mt-3 text-sm text-zinc-400">14 nap próba, nincs kötelezettség</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Feature rács */}
-        <section className="mt-16 grid gap-6 md:grid-cols-3">
-          {[
-            { t: 'Event Layer', d: 'Egységes események: order_created, price_changed, cart_abandoned…' },
-            { t: 'Rule Engine', d: 'WHEN / IF / THEN no-code, A/B, limitálás, throttling.' },
-            { t: 'Dispatcher', d: 'Üzenetsor, e-mail/Slack kiküldés, 5 percenkénti cron.' },
-          ].map((f) => (
-            <div key={f.t} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6 backdrop-blur">
-              <div className="text-emerald-300 font-semibold">{f.t}</div>
-              <p className="mt-2 text-zinc-300">{f.d}</p>
-            </div>
-          ))}
-        </section>
+
 
         {/* Lábléc */}
         <footer className="mt-20 border-t border-zinc-800 pt-6 text-sm text-zinc-500">
