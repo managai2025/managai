@@ -1,0 +1,61 @@
+name: Deploy App Runner (Go)
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "cmd/**"
+      - "Dockerfile"
+      - ".github/workflows/deploy.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+      ECR_REPO:    ${{ secrets.ECR_REPOSITORY }}
+      ROLE_ARN:    ${{ secrets.AWS_ROLE_ARN }}
+      APP_RUNNER_ARN: ${{ secrets.APP_RUNNER_ARN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS creds (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to ECR
+        id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build & Push image
+        run: |
+          IMAGE="${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:latest"
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+
+      - name: Create App Runner service if missing
+        run: |
+          if [ -z "$APP_RUNNER_ARN" ]; then
+            # első alkalommal hozzunk létre egy szolgáltatást
+            OUTPUT=$(aws apprunner create-service \
+              --service-name managai \
+              --source-configuration ImageRepository="{ImageIdentifier=${IMAGE},ImageRepositoryType=ECR,ImageConfiguration={Port=8080}}" \
+              --auto-deployments-enabled \
+              --query 'Service.ServiceArn' --output text)
+            echo "APP_RUNNER_ARN=$OUTPUT" >> $GITHUB_ENV
+          else
+            echo "APP_RUNNER_ARN=$APP_RUNNER_ARN" >> $GITHUB_ENV
+          fi
+
+      - name: Update App Runner to new image
+        run: |
+          aws apprunner update-service \
+            --service-arn "${APP_RUNNER_ARN}" \
+            --source-configuration ImageRepository="{ImageIdentifier=${IMAGE},ImageRepositoryType=ECR,ImageConfiguration={Port=8080}}"
