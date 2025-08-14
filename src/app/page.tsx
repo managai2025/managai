@@ -63,7 +63,7 @@ export default function Home() {
           <div>
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
               <span className="bg-gradient-to-tr from-emerald-300 to-lime-200 bg-clip-text text-transparent">
-                Az intelligens webshop automatizáció új generációja
+                Az intelligens webshop automatizáció új generációja,
               </span>
               <span className="block mt-2 text-2xl md:text-3xl text-white/90">ami elvégzi a webshopod manuális munkáit.</span>
             </h1>
