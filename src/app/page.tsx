@@ -45,7 +45,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             {/* /public/logo.svg esetén ez jelenik meg */}
             <Image src="/logo.svg" alt="ManagAI" width={48} height={48} className="rounded-lg" />
-            <span className="text-xl font-semibold tracking-tight text-emerald-300">ManagAI</span>
+            <span className="text-2xl font-bold tracking-wide text-emerald-300">ManagAI</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-300">
             <Link href="/events" className="hover:text-white">Események</Link>
