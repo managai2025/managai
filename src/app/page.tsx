@@ -52,7 +52,10 @@ export default function Home() {
                priority
                className="h-12 w-12 rounded-lg"
              />
-            <span className="text-2xl font-bold tracking-wide text-emerald-300">ManagAI</span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold tracking-wide text-emerald-300">ManagAI</span>
+              <span className="text-sm text-zinc-400">2025 | Főoldal</span>
+            </div>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-300">
             <Link href="/events" className="hover:text-white">Események</Link>
@@ -61,6 +64,12 @@ export default function Home() {
             <Link href="/dashboard" className="rounded-xl bg-white text-black px-3 py-1.5 font-medium hover:opacity-90">
               Belépés
             </Link>
+          </nav>
+          <nav className="hidden lg:flex items-center gap-6 text-sm text-zinc-400">
+            <Link href="/privacy" className="hover:text-white">Adatvédelmi tájékoztató</Link>
+            <Link href="/impressum" className="hover:text-white">Impresszum</Link>
+            <Link href="/terms" className="hover:text-white">ÁSZF</Link>
+            <Link href="/support" className="hover:text-white">Ügyfélszolgálat</Link>
           </nav>
         </header>
 
@@ -173,11 +182,14 @@ export default function Home() {
                       }`}>
                         {pkg.name}
                       </h3>
-                      <span className={`text-xl font-bold ${
-                        idx === 1 ? 'text-emerald-300' : 'text-zinc-300'
-                      }`}>
-                        {pkg.price} Ft
-                      </span>
+                      <div className="text-right">
+                        <span className={`text-xl font-bold ${
+                          idx === 1 ? 'text-emerald-300' : 'text-zinc-300'
+                        }`}>
+                          {pkg.price} Ft
+                        </span>
+                        <div className="text-xs text-zinc-400">+áfa/hó</div>
+                      </div>
                     </div>
                     <ul className="text-xs text-zinc-300 space-y-1.5 leading-relaxed">
                       {pkg.features.map((feature, fIdx) => (
@@ -193,6 +205,11 @@ export default function Home() {
                 ))}
               </div>
 
+              {/* ÁFA és időszak információ */}
+              <div className="mt-4 text-center">
+                <p className="text-xs text-zinc-400">27% ÁFA-t tartalmaznak</p>
+              </div>
+
               {/* CTA */}
               <div className="mt-5 text-center">
                 <button className="w-full rounded-xl bg-gradient-to-r from-emerald-400 to-lime-400 px-5 py-3 text-base font-bold text-black hover:from-emerald-300 hover:to-lime-300 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-emerald-500/25">
@@ -206,7 +223,17 @@ export default function Home() {
 
         {/* Lábléc */}
         <footer className="mt-20 border-t border-zinc-800 pt-6 text-sm text-zinc-500 text-center">
-          © {new Date().getFullYear()} ManagAI — MVP demo
+          <div className="mb-4">
+            <p>© {new Date().getFullYear()} ManagAI — MVP demo</p>
+            <p className="mt-2">Áraink 27% ÁFA-t tartalmaznak</p>
+            <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs">
+              <Link href="/" className="hover:text-white">Főoldal</Link>
+              <Link href="/privacy" className="hover:text-white">Adatvédelmi tájékoztató</Link>
+              <Link href="/impressum" className="hover:text-white">Impresszum</Link>
+              <Link href="/terms" className="hover:text-white">ÁSZF</Link>
+              <Link href="/support" className="hover:text-white">Ügyfélszolgálat</Link>
+            </div>
+          </div>
         </footer>
       </div>
     </main>
